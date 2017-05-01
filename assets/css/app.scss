@@ -1,0 +1,22 @@
+/* App SCSS */
+
+@import "../node_modules/tachyons-sass/tachyons.scss";
+
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
+  @extend .f6;
+  @extend .ph3;
+  @extend .pv2;
+  @extend .pt0;
+  @extend .mb2;
+  @extend .link;
+  @extend .dim;
+  @extend .ba;
+  @extend .b--black;
+  @extend .bw1;
+  @extend .black;
+  @extend .dib;
+  @extend .bg-transparent;
+}
