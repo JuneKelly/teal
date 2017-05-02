@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body class="">
+  <body class="black bg-washed-blue">
 
-    <div id="outer-wrapper" class="fl w-100 w-80-ns h-100 pl4 pr4 sans-serif black bg-white">
+    <div id="outer-wrapper" class="fl w-100 w-70-ns w-80-m h-100 pl4 pr4 sans-serif ">
 
       <div id="header" class="f3 fl w-100 mb4 mt3 pb3 bb b--mid-gray">
         <a href="/" class="fl b link black">Teal</a>
