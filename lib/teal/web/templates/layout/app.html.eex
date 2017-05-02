@@ -33,7 +33,10 @@
       </div>
 
       <main role="main">
-        <%= render @view_module, @view_template, assigns %>
+        <div class="ph4">
+          <%= render @view_module, @view_template, assigns %>
+
+        </div>
       </main>
 
     </div> <!-- /outer-wrapper -->
