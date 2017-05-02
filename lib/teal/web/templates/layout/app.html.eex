@@ -13,10 +13,14 @@
 
   <body class="">
 
-    <div id="outer-wrapper" class="fl w-100 pa3 sans-serif black bg-washed-blue">
+    <div id="outer-wrapper" class="fl w-100 h-100 pl4 pr4 sans-serif black bg-white">
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= if get_flash(@conn, :info) do %>
+        <p class="fl w-100 pa3 mb1 b white bg-blue" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="fl w-100 pa3 mb1 b white bg-red" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
