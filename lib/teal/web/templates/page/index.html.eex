@@ -1,3 +1,16 @@
 <div class="tc">
   Teal: The dumb publishing platform
 </div>
+<div>
+
+  <br/>
+  <%= form_tag("/document") do %>
+    <textarea class="monospace pa2 w-100 mb2 ba b--mid-gray"
+              placeholder="Markdown content here..."
+              id=""
+              name="md_content"
+              rows="10"></textarea>
+    <br/>
+    <button class="fl pa2 bg-white ba b--mid-gray br1 pointer dim">Create</button>
+  <% end %>
+</div>
