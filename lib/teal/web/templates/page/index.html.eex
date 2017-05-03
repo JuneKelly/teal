@@ -1,4 +1,8 @@
 <div class="">
-  Doot
-
+  <p>
+    Welcome to Teal
+  </p>
+  <p>
+    <a href="/new">Create a new document</a>
+  </p>
 </div>

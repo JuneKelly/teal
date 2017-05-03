@@ -2,6 +2,10 @@
 
 @import "../node_modules/tachyons-sass/tachyons.scss";
 
+#main-content {
+  min-height: 200px;
+}
+
 .btn {
   &:hover {
     cursor: pointer;
