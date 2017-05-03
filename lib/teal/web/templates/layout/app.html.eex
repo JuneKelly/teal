@@ -15,7 +15,7 @@
 
     <div id="outer-wrapper" class="fl w-100 w-70-ns w-80-m h-100 pl4 pr4 sans-serif ">
 
-      <div id="header" class="f3 fl w-100 mb4 mt3 pb3 bb b--mid-gray">
+      <div id="header" class="f3 fl w-100 mt3 pb3 bb b--mid-gray">
         <a href="/" class="fl b link black underline-hover">Teal</a>
 
         <a href="/about" class="fr ph3 link black underline-hover">About</a>
@@ -23,7 +23,7 @@
 
       </div>
 
-      <div id="alerts" class="fl w-100">
+      <div id="alerts" class="fl w-100 pv2">
         <%= if get_flash(@conn, :info) do %>
           <p class="fl w-100 pa3 mb1 b white bg-blue" role="alert"><%= get_flash(@conn, :info) %></p>
         <% end %>
@@ -32,7 +32,7 @@
         <% end %>
       </div>
 
-      <div id="main-content" class="fl w-100 pa3 f4 bg-white br3">
+      <div id="main-content" class="fl w-100 pa3 mt1 f4 bg-white br3">
         <%= render @view_module, @view_template, assigns %>
       </div>
 
