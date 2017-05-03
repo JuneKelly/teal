@@ -1,8 +1,3 @@
-<div class="">
-  <p>
-    Welcome to Teal
-  </p>
-  <p>
-    <a href="/new">Create a new document</a>
-  </p>
+<div class="tc">
+  Teal: The dumb publishing platform
 </div>
