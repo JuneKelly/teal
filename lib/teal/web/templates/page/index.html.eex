@@ -1,5 +1,5 @@
 <div class="f4 tc">
-  Teal: The dumb publishing platform
+  <%= site_name %>: The dumb publishing platform
 </div>
 <div>
 

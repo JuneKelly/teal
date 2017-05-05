@@ -39,6 +39,7 @@ defmodule Teal.Web do
       import Teal.Web.Router.Helpers
       import Teal.Web.ErrorHelpers
       import Teal.Web.Gettext
+      import Teal.Web.ViewHelpers
     end
   end
 

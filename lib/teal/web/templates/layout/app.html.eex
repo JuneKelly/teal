@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Teal</title>
+    <title><%= site_name %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -16,7 +16,7 @@
     <div id="outer-wrapper" class="fl w-100 w-80-ns w-100-m h-100 pl4 pr4 sans-serif ">
 
       <div id="header" class="f3 fl w-100 mt3 pb3 bb b--mid-gray">
-        <a href="/" class="fl b link black underline-hover">Teal</a>
+        <a href="/" class="fl b link black underline-hover"><%= site_name %></a>
 
         <a href="/about" class="fr ph3 link black underline-hover">About</a>
 
