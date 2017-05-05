@@ -11,7 +11,7 @@ defmodule Teal.Web.PageController do
   end
 
   def show_document_by_slug(conn, %{"slug" => slug}) do
-    Logger.log :info, "showing document '#{slug}'"
+    Logger.log :info, "Showing document '#{slug}'"
     case Repo.get_by(Document, slug: slug) do
       nil ->
         conn
@@ -22,6 +22,7 @@ defmodule Teal.Web.PageController do
           {:ok, html, []} ->
             render conn, "document.html", document_html: html
           _ ->
+            Logger.log :warn, "Document '#{slug}' is not valid markdown"
             conn
             |> put_flash(:error, "Error, invalid document")
             |> redirect(to: page_path(conn, :index))
@@ -31,6 +32,7 @@ defmodule Teal.Web.PageController do
 
   def create_document(conn, %{"document" => document_params}) do
     slug = :crypto.rand_bytes(9) |> Base.url_encode64
+    Logger.log :info, "Creating document '#{slug}'"
     document_params = Map.put(document_params, "slug", slug)
     changeset = Document.changeset(%Document{}, document_params)
     rerender_with_error = fn ->
@@ -42,13 +44,16 @@ defmodule Teal.Web.PageController do
       {:ok, _html, []} ->
         case Repo.insert(changeset) do
           {:ok, document} ->
+            Logger.log :info, "Created document '#{slug}'"
             conn
             |> put_flash(:info, "Created document")
             |> redirect(to: page_path(conn, :show_document_by_slug, document.slug))
           {:error, changeset} ->
+            Logger.log :warn, "Could not insert document"
             rerender_with_error.()
         end
       _ ->
+        Logger.log :warn, "Submitted document is not valid markdown"
         rerender_with_error.()
     end
   end
