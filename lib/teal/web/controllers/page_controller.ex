@@ -15,8 +15,14 @@ defmodule Teal.Web.PageController do
         |> put_status(404)
         |> render("404.html")
       document ->
-        html = Earmark.as_html! document.md_content
-        render conn, "document.html", document_html: html
+        case Earmark.as_html(document.md_content) do
+          {:ok, html} ->
+            render conn, "document.html", document_html: html
+          _ ->
+            conn
+            |> put_flash(:error, "Error, invalid document")
+            |> redirect(to: page_path(:index))
+        end
     end
   end
 
@@ -35,4 +41,5 @@ defmodule Teal.Web.PageController do
         |> render("index.html", changeset: changeset)
     end
   end
+
 end
