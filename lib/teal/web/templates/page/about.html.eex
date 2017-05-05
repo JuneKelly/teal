@@ -1,5 +1,11 @@
 <h1 class="tc"><%= site_name() %>: A Dumb Publishing Platform</h1>
-<p class="f3">
-  <%= site_name() %> is a comically simple publishing platform. Just put in some Markdown, save,
-  and that's it.
-</p>
+<div class="f3">
+  <p>
+    <%= site_name() %> is a comically simple publishing platform. Just put in some Markdown, save,
+    and that's it.
+  </p>
+  <p>
+    <%= site_name() %> is open source software, find the source-code
+    <a target="_blank" href="https://github.com/ShaneKilkelly/teal">here</a>.
+  </p>
+</div>
