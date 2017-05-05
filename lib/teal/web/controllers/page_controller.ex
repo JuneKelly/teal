@@ -10,6 +10,7 @@ defmodule Teal.Web.PageController do
 
   plug :rate_limit,
     %{name: "show document", max_requests: 100, interval_seconds: 60}
+    when action in [:show_document_by_slug]
 
 
   def index(conn, _params) do
