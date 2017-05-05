@@ -10,6 +10,10 @@ defmodule Teal.Web.PageController do
     render conn, "index.html", changeset: changeset
   end
 
+  def about(conn, _params) do
+    render conn, "about.html"
+  end
+
   def show_document_by_slug(conn, %{"slug" => slug}) do
     Logger.log :info, "Showing document '#{slug}'"
     case Repo.get_by(Document, slug: slug) do

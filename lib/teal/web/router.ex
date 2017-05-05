@@ -17,6 +17,7 @@ defmodule Teal.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/about", PageController, :about
     get "/d/:slug", PageController, :show_document_by_slug
     post "/document", PageController, :create_document
   end
