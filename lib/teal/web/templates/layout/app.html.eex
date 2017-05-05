@@ -24,10 +24,16 @@
 
       <div id="alerts" class="fl w-100 pv2">
         <%= if get_flash(@conn, :info) do %>
-          <p class="fl w-100 pa3 mb1 b white bg-blue" role="alert"><%= get_flash(@conn, :info) %></p>
+          <p id="info-alert" class="fl w-100 pa3 mb1 b white bg-blue" role="alert">
+            <%= get_flash(@conn, :info) %>
+            <a href="#" class="fr white link" onclick="document.querySelector('#info-alert').style.display='none'">X</a>
+          </p>
         <% end %>
         <%= if get_flash(@conn, :error) do %>
-          <p class="fl w-100 pa3 mb1 b white bg-red" role="alert"><%= get_flash(@conn, :error) %></p>
+          <p id="error-alert" class="fl w-100 pa3 mb1 b white bg-red" role="alert">
+            <%= get_flash(@conn, :error) %>
+            <a href="#" class="fr white link" onclick="document.querySelector('#error-alert').style.display='none'">X</a>
+          </p>
         <% end %>
       </div>
 
