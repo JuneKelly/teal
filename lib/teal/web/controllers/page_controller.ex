@@ -2,10 +2,11 @@ defmodule Teal.Web.PageController do
   use Teal.Web, :controller
   alias Teal.Core.Document
   alias Teal.Repo
-  alias Teal.RateLimiter
   require Logger
 
-  plug :rate_limit, %{name: "create_document", max_requests: 10, interval_seconds: 60} when action in [:create_document]
+  plug :rate_limit,
+    %{name: "create_document", max_requests: 10, interval_seconds: 60}
+    when action in [:create_document]
 
   def index(conn, _params) do
     Logger.log :info, "rendering index page"
@@ -38,7 +39,7 @@ defmodule Teal.Web.PageController do
   end
 
   def create_document(conn, %{"document" => document_params}) do
-    slug = :crypto.rand_bytes(9) |> Base.url_encode64
+    slug = :crypto.strong_rand_bytes(9) |> Base.url_encode64
     Logger.log :info, "Creating document '#{slug}'"
     document_params = Map.put(document_params, "slug", slug)
     changeset = Document.changeset(%Document{}, document_params)
