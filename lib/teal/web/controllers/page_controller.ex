@@ -12,7 +12,6 @@ defmodule Teal.Web.PageController do
     %{name: "show document", max_requests: 100, interval_seconds: 60}
     when action in [:show_document_by_slug]
 
-
   def index(conn, _params) do
     Logger.log :info, "rendering index page"
     changeset = Document.changeset(%Document{})
