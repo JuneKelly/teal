@@ -7,3 +7,10 @@
 .monospace {
   font-family: monospace;
 }
+
+.raw-content-wrapper {
+  pre {
+    padding: 12px;
+    background-color: #eee;
+  }
+}

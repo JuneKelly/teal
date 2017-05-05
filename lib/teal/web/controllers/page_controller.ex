@@ -2,13 +2,16 @@ defmodule Teal.Web.PageController do
   use Teal.Web, :controller
   alias Teal.Core.Document
   alias Teal.Repo
+  require Logger
 
   def index(conn, _params) do
+    Logger.log :info, "rendering index page"
     changeset = Document.changeset(%Document{})
     render conn, "index.html", changeset: changeset
   end
 
   def show_document_by_slug(conn, %{"slug" => slug}) do
+    Logger.log :info, "showing document '#{slug}'"
     case Repo.get_by(Document, slug: slug) do
       nil ->
         conn
