@@ -2,7 +2,10 @@ defmodule Teal.Web.PageController do
   use Teal.Web, :controller
   alias Teal.Core.Document
   alias Teal.Repo
+  alias Teal.RateLimiter
   require Logger
+
+  plug :rate_limit, %{name: "create_document", max_requests: 10, interval_seconds: 60} when action in [:create_document]
 
   def index(conn, _params) do
     Logger.log :info, "rendering index page"
@@ -59,6 +62,23 @@ defmodule Teal.Web.PageController do
       _ ->
         Logger.log :warn, "Submitted document is not valid markdown"
         rerender_with_error.()
+    end
+  end
+
+  def rate_limit(conn, options \\ %{}) do
+    limiter_name = options[:name]
+    interval_ms = options[:interval_seconds] * 1000
+    max_requests = options[:max_requests]
+    ip = conn.remote_ip |> Tuple.to_list |> Enum.join(".")
+    bucket_name = "#{limiter_name}:#{ip}"
+    case ExRated.check_rate(bucket_name, interval_ms, max_requests) do
+      {:ok, _count} ->
+        conn
+      {:error, _count} ->
+        conn
+        |> put_status(:forbidden)
+        |> render("rate_limit.html")
+        |> halt()
     end
   end
 

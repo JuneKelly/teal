@@ -1,5 +1,5 @@
-<h1 class="tc"><%= site_name %>: A Dumb Publishing Platform</h1>
+<h1 class="tc"><%= site_name() %>: A Dumb Publishing Platform</h1>
 <p class="f3">
-  <%= site_name %> is a comically simple publishing platform. Just put in some Markdown, save,
+  <%= site_name() %> is a comically simple publishing platform. Just put in some Markdown, save,
   and that's it.
 </p>

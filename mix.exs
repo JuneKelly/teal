@@ -17,7 +17,7 @@ defmodule Teal.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Teal.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: [:logger, :runtime_tools, :ex_rated]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,6 +36,7 @@ defmodule Teal.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:earmark, "~> 1.2"},
+     {:ex_rated, "~> 1.2"},
      {:cowboy, "~> 1.0"}]
   end
 
