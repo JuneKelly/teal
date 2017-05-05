@@ -8,6 +8,10 @@ defmodule Teal.Web.PageController do
     %{name: "create_document", max_requests: 5, interval_seconds: 60}
     when action in [:create_document]
 
+  plug :rate_limit,
+    %{name: "show document", max_requests: 100, interval_seconds: 60}
+
+
   def index(conn, _params) do
     Logger.log :info, "rendering index page"
     changeset = Document.changeset(%Document{})
