@@ -12,6 +12,6 @@
         rows: "8"
     %>
     <br/>
-    <button class="fl pa2 bg-white ba b--mid-gray br1 pointer dim">Create</button>
+    <%= submit "Create", class: "fl pa2 bg-white ba b--mid-gray br1 pointer dim " %>
   <% end %>
 </div>
