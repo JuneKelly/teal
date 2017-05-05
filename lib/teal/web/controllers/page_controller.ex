@@ -20,7 +20,7 @@ defmodule Teal.Web.PageController do
       document ->
         case Earmark.as_html(document.md_content) do
           {:ok, html, []} ->
-            render conn, "document.html", document_html: html
+            render conn, "document.html", document: document, document_html: html
           _ ->
             Logger.log :warn, "Document '#{slug}' is not valid markdown"
             conn

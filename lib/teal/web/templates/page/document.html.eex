@@ -1,3 +1,9 @@
-<div class="raw-content-wrapper">
+<div class="fl w-100 raw-content-wrapper">
   <%= raw(@document_html) %>
+</div>
+
+<div class="fl w-100 bt b--mid-grey mt4 pt3 pb1">
+  <a class="link fr" href="<%= page_path(@conn, :show_document_by_slug, @document.slug) %>">
+    permalink
+  </a>
 </div>

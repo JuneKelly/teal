@@ -31,7 +31,7 @@
         <% end %>
       </div>
 
-      <div id="main-content" class="fl w-100 pa3 mt1 f5 bg-white br3">
+      <div id="main-content" class="fl w-100 pa3 mt1 mb4 f5 bg-white br3">
         <%= render @view_module, @view_template, assigns %>
       </div>
 
