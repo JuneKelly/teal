@@ -5,12 +5,12 @@
 
   <br/>
   <%= form_for @changeset, page_path(@conn, :create_document), fn f -> %>
-  <%=
-    textarea f, :md_content,
-    class: "monospace pa2 w-100 mb2 ba b--mid-gray",
-    placeholder: "Markdown content here...",
-    rows: "8"
-  %>
+    <%=
+      textarea f, :md_content,
+        class: "monospace pa2 w-100 mb2 ba b--mid-gray",
+        placeholder: "Markdown content here...",
+        rows: "8"
+    %>
     <br/>
     <button class="fl pa2 bg-white ba b--mid-gray br1 pointer dim">Create</button>
   <% end %>
