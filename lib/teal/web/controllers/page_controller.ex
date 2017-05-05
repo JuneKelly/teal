@@ -5,7 +5,7 @@ defmodule Teal.Web.PageController do
   require Logger
 
   plug :rate_limit,
-    %{name: "create_document", max_requests: 10, interval_seconds: 60}
+    %{name: "create_document", max_requests: 5, interval_seconds: 60}
     when action in [:create_document]
 
   def index(conn, _params) do
@@ -66,7 +66,7 @@ defmodule Teal.Web.PageController do
     end
   end
 
-  def rate_limit(conn, options \\ %{}) do
+  defp rate_limit(conn, options \\ %{}) do
     limiter_name = options[:name]
     interval_ms = options[:interval_seconds] * 1000
     max_requests = options[:max_requests]
