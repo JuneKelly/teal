@@ -1,5 +1,10 @@
 # Teal
 
+A dumb publishing platform.
+
+![Teal Demo](./teal_demo.gif)
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
