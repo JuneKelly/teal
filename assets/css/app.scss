@@ -2,7 +2,9 @@
 
 @import "../node_modules/tachyons-sass/tachyons.scss";
 
-#main-content {}
+#outer-wrapper {
+  max-width: 900px;
+}
 
 .monospace {
   font-family: monospace;
