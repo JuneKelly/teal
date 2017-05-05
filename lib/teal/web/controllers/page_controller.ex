@@ -16,12 +16,12 @@ defmodule Teal.Web.PageController do
         |> render("404.html")
       document ->
         case Earmark.as_html(document.md_content) do
-          {:ok, html} ->
+          {:ok, html, []} ->
             render conn, "document.html", document_html: html
           _ ->
             conn
             |> put_flash(:error, "Error, invalid document")
-            |> redirect(to: page_path(:index))
+            |> redirect(to: page_path(conn, :index))
         end
     end
   end
@@ -30,15 +30,23 @@ defmodule Teal.Web.PageController do
     slug = :crypto.rand_bytes(9) |> Base.url_encode64
     document_params = Map.put(document_params, "slug", slug)
     changeset = Document.changeset(%Document{}, document_params)
-    case Repo.insert(changeset) do
-      {:ok, document} ->
-        conn
-        |> put_flash(:info, "Created document")
-        |> redirect(to: page_path(conn, :show_document_by_slug, document.slug))
-      {:error, changeset} ->
-        conn
-        |> put_flash(:error, "Error, invalid document")
-        |> render("index.html", changeset: changeset)
+    rerender_with_error = fn ->
+      conn
+      |> put_flash(:error, "Error, invalid document")
+      |> render("index.html", changeset: changeset)
+    end
+    case Earmark.as_html(document_params["md_content"]) do
+      {:ok, _html, []} ->
+        case Repo.insert(changeset) do
+          {:ok, document} ->
+            conn
+            |> put_flash(:info, "Created document")
+            |> redirect(to: page_path(conn, :show_document_by_slug, document.slug))
+          {:error, changeset} ->
+            rerender_with_error.()
+        end
+      _ ->
+        rerender_with_error.()
     end
   end
 
